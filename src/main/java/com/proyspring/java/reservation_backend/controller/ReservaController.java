@@ -3,6 +3,7 @@ package com.proyspring.java.reservation_backend.controller;
 import com.proyspring.java.reservation_backend.model.Reservation;
 import com.proyspring.java.reservation_backend.service.ReservaService;
 import java.util.List;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,7 +34,7 @@ public class ReservaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Reservation crearReserva(@RequestBody Reservation reserva) {
+    public Reservation crearReserva(@Valid @RequestBody Reservation reserva) {
         return reservaService.crearReserva(reserva);
     }
 

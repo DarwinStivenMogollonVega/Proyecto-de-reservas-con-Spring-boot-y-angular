@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import lombok.AllArgsConstructor;
@@ -27,15 +29,19 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "El nombre del cliente es obligatorio")
     @Column(nullable = false)
     private String nombreCliente;
 
+    @NotNull(message = "La fecha es obligatoria")
     @Column(nullable = false)
     private LocalDate fecha;
 
+    @NotNull(message = "La hora es obligatoria")
     @Column(nullable = false)
     private LocalTime hora;
 
+    @NotBlank(message = "El servicio es obligatorio")
     @Column(nullable = false)
     private String servicio;
 
